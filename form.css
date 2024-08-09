@@ -1,0 +1,177 @@
+/* Overall Body Style */
+body {
+    background: linear-gradient(135deg, #f00434, #66a3ff);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container Style */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Form Container Style */
+.form-container {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Header Style */
+h2 {
+    color: #ffffff;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Fieldset Style */
+fieldset {
+    border: none;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+/* Legend Style */
+legend {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Label Style */
+.form-group label {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* Input and Select Style */
+.form-control, .form-control-file, .form-check-input {
+    background: #ffffff;
+    color: #333333;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    padding: 10px;
+}
+
+.form-control:focus, .form-control-file:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+/* Button Style */
+.btn {
+    background: #0056b3;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background: #004494;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    background: #003366;
+    transform: translateY(0);
+}
+
+/* Multi-select Dropdowns */
+.form-control[multiple] {
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Checkboxes */
+.form-check-label {
+    margin-left: 10px;
+    color: #ffffff;
+}
+
+/* Dynamic Fields Container */
+.qualification-group {
+    margin-bottom: 20px;
+}
+
+.qualification-group input[type="file"] {
+    margin-top: 10px;
+}
+
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkbox-group label {
+    margin-right: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control, .form-control-file, .btn {
+        width: 100%;
+    }
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    fieldset {
+        padding: 10px;
+    }
+
+    .checkbox-group {
+        flex-direction: column;
+    }
+
+    .checkbox-group label {
+        flex: 1;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-control {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .submit-btn, .add-btn {
+        padding: 10px;
+        font-size: 1rem;
+    }
+}

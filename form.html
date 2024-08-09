@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Onboarding Form</title>
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="form-container">
+        <h2 class="text-center mb-4">BaatKaro Onboarding Platform</h2>
+        <form id="onboardingForm">
+            <!-- Profile Photo -->
+            <fieldset>
+                <legend>Profile Photo</legend>
+                <div class="form-group">
+                    <label for="profilePhoto">Upload Profile Photo</label>
+                    <input type="file" class="form-control-file" id="profilePhoto" accept="image/*" required>
+                </div>
+            </fieldset>
+
+            <!-- Title -->
+            <fieldset>
+                <legend>Title</legend>
+                <div class="form-group">
+                    <label for="title">Select Title</label>
+                    <select class="form-control" id="title" required>
+                        <option>Mr</option>
+                        <option>Ms</option>
+                        <option>Mrs</option>
+                        <option>Dr</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <!-- Full Name -->
+            <fieldset>
+                <legend>Full Name</legend>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" required>
+                </div>
+            </fieldset>
+
+            <!-- Identity Information -->
+            <fieldset>
+                <legend>Identity Information</legend>
+                <div class="form-group">
+                    <label for="identityType">Identity Type</label>
+                    <select class="form-control" id="identityType" required>
+                        <option>Aadhar</option>
+                        <option>PAN</option>
+                        <option>Voter ID</option>
+                        <option>Driver's License</option>
+                        <option>Passport</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="identityNumber">Identity Number</label>
+                    <input type="text" class="form-control" id="identityNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="identityUpload">Upload Identity Document</label>
+                    <input type="file" class="form-control-file" id="identityUpload" required>
+                </div>
+            </fieldset>
+
+            <!-- Demographics -->
+            <fieldset>
+                <legend>Demographics</legend>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" id="gender" required>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="nationality">City/State</label>
+                    <input type="text" class="form-control" id="nationality" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea class="form-control" id="address" rows="3" required></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Bio -->
+            <fieldset>
+                <legend>Bio</legend>
+                <div class="form-group">
+                    <label for="bio">Short Bio (200 words max)</label>
+                    <textarea class="form-control" id="bio" rows="4" maxlength="1000" required></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Highest Qualification -->
+            <fieldset>
+                <legend>Highest Qualification</legend>
+                <div class="form-group">
+                    <label for="qualifications">Qualifications</label>
+                    <div id="qualificationContainer">
+                        <div class="qualification-group">
+                            <select class="form-control" id="qualificationSelect">
+                                <option>MD (Psychiatry)</option>
+                                <option>M.Phil (Clinical Psychology)</option>
+                                <option>M.A. (Counseling Psychology)</option>
+                                <option>MSc Psychology</option>
+                                <option>PhD Psychology</option>
+                                <!-- Add more qualifications as needed -->
+                            </select>
+                            <input type="file" class="form-control-file mt-2" required>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary mt-2" id="addQualification">Add Another Qualification</button>
+                </div>
+            </fieldset>
+
+
+            <!-- Field of Study -->
+            <fieldset>
+                <legend>Field of Study</legend>
+                <div class="form-group">
+                    <label>Select Field(s) of Study</label>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="cognitivePsychology" name="fieldOfStudy" value="Cognitive Psychology">
+                        <label class="form-check-label" for="cognitivePsychology">Cognitive Psychology</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="clinicalPsychology" name="fieldOfStudy" value="Clinical Psychology">
+                        <label class="form-check-label" for="clinicalPsychology">Clinical Psychology</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="developmentalPsychology" name="fieldOfStudy" value="Developmental Psychology">
+                        <label class="form-check-label" for="developmentalPsychology">Developmental Psychology</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="healthPsychology" name="fieldOfStudy" value="Health Psychology">
+                        <label class="form-check-label" for="healthPsychology">Health Psychology</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="industrialOrganizationalPsychology" name="fieldOfStudy" value="Industrial-Organizational Psychology">
+                        <label class="form-check-label" for="industrialOrganizationalPsychology">Industrial-Organizational Psychology</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="neuropsychology" name="fieldOfStudy" value="Neuropsychology">
+                        <label class="form-check-label" for="neuropsychology">Neuropsychology</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="socialPsychology" name="fieldOfStudy" value="Social Psychology">
+                        <label class="form-check-label" for="socialPsychology">Social Psychology</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="educationalPsychology" name="fieldOfStudy" value="Educational Psychology">
+                        <label class="form-check-label" for="educationalPsychology">Educational Psychology</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="forensicPsychology" name="fieldOfStudy" value="Forensic Psychology">
+                        <label class="form-check-label" for="forensicPsychology">Forensic Psychology</label>
+                    </div>
+                </div>
+            </fieldset>
+
+
+
+
+            <!-- Professional Information -->
+            <fieldset>
+                <legend>Professional Information</legend>
+                <div class="form-group">
+                    <label for="licenseBody">License Body</label>
+                    <select class="form-control" id="licenseBody" required>
+                        <option value="" disabled selected>Select License Body</option>
+                        <option value="IMA">Indian Medical Association</option>
+                        <option value="RCI">Rehabilitation Council Of India</option>
+                        <option value="NA">NA</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="licenseNumber">License Registration Number</label>
+                    <input type="text" class="form-control" id="licenseNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseDocument">Upload License Document</label>
+                    <input type="file" class="form-control-file" id="licenseDocument" required>
+                </div>
+                <div class="form-group">
+                    <label for="experienceYears">Years of Experience</label>
+                    <input type="number" class="form-control" id="experienceYears" required>
+                </div>
+                <div class="form-group">
+    <label>Areas of Specialization</label>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="anxiety" name="specializations" value="Anxiety">
+        <label class="form-check-label" for="anxiety">Anxiety</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="stressManagement" name="specializations" value="Stress Management">
+        <label class="form-check-label" for="stressManagement">Stress Management</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="depression" name="specializations" value="Depression">
+        <label class="form-check-label" for="depression">Depression</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="ocd" name="specializations" value="OCD">
+        <label class="form-check-label" for="ocd">OCD</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="bipolarDisorder" name="specializations" value="Bipolar Disorder">
+        <label class="form-check-label" for="bipolarDisorder">Bipolar Disorder</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="psychosis" name="specializations" value="Psychosis">
+        <label class="form-check-label" for="psychosis">Psychosis</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="griefLoss" name="specializations" value="Grief & Loss">
+        <label class="form-check-label" for="griefLoss">Grief & Loss</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="trauma" name="specializations" value="Trauma">
+        <label class="form-check-label" for="trauma">Trauma</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="adhd" name="specializations" value="ADHD">
+        <label class="form-check-label" for="adhd">ADHD</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="teenageIssue" name="specializations" value="Teenage Issue">
+        <label class="form-check-label" for="teenageIssue">Teenage Issue</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="adolescentCounselling" name="specializations" value="Adolescent Counselling">
+        <label class="form-check-label" for="adolescentCounselling">Adolescent Counselling</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="angerManagement" name="specializations" value="Anger Management">
+        <label class="form-check-label" for="angerManagement">Anger Management</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="alcoholAddiction" name="specializations" value="Alcohol Addiction">
+        <label class="form-check-label" for="alcoholAddiction">Alcohol Addiction</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="tobaccoAddiction" name="specializations" value="Tobacco Addiction">
+        <label class="form-check-label" for="tobaccoAddiction">Tobacco Addiction</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="pornAddiction" name="specializations" value="Porn Addiction">
+        <label class="form-check-label" for="pornAddiction">Porn Addiction</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="pcos" name="specializations" value="PCOS">
+        <label class="form-check-label" for="pcos">PCOS</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="pmdd" name="specializations" value="PMDD">
+        <label class="form-check-label" for="pmdd">PMDD</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="ptsd" name="specializations" value="PTSD">
+        <label class="form-check-label" for="ptsd">PTSD</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="postpartumPsychosis" name="specializations" value="Postpartum Psychosis">
+        <label class="form-check-label" for="postpartumPsychosis">Postpartum Psychosis</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="sexualHealth" name="specializations" value="Sexual Health">
+        <label class="form-check-label" for="sexualHealth">Sexual Health</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="insomnia" name="specializations" value="Insomnia">
+        <label class="form-check-label" for="insomnia">Insomnia</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="eatingDisorder" name="specializations" value="Eating Disorder">
+        <label class="form-check-label" for="eatingDisorder">Eating Disorder</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="sleepDisorder" name="specializations" value="Sleep Disorder">
+        <label class="form-check-label" for="sleepDisorder">Sleep Disorder</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="schizophrenia" name="specializations" value="Schizophrenia">
+        <label class="form-check-label" for="schizophrenia">Schizophrenia</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="childCounselling" name="specializations" value="Child Counselling">
+        <label class="form-check-label" for="childCounselling">Child Counselling</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="familyCounselling" name="specializations" value="Family Counselling">
+        <label class="form-check-label" for="familyCounselling">Family Counselling</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="relationshipCounselling" name="specializations" value="Relationship Counselling">
+        <label class="form-check-label" for="relationshipCounselling">Relationship Counselling</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="maritalCounselling" name="specializations" value="Marital Counselling">
+        <label class="form-check-label" for="maritalCounselling">Marital Counselling</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="divorceCounselling" name="specializations" value="Divorce Counselling">
+        <label class="form-check-label" for="divorceCounselling">Divorce Counselling</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="breakupCounselling" name="specializations" value="Breakup Counselling">
+        <label class="form-check-label" for="breakupCounselling">Breakup Counselling</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="parenting" name="specializations" value="Parenting">
+        <label class="form-check-label" for="parenting">Parenting</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="careerCounselling" name="specializations" value="Career Counselling">
+        <label class="form-check-label" for="careerCounselling">Career Counselling</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="selfHarmCounselling" name="specializations" value="Self Harm Counselling">
+        <label class="form-check-label" for="selfHarmCounselling">Self Harm Counselling</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="genderDysphoria" name="specializations" value="Gender Dysphoria">
+        <label class="form-check-label" for="genderDysphoria">Gender Dysphoria</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="geriatricCounselling" name="specializations" value="Geriatric Counselling">
+        <label class="form-check-label" for="geriatricCounselling">Geriatric Counselling</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="bodyDysmorphicDisorder" name="specializations" value="Body Dysmorphic Disorder">
+        <label class="form-check-label" for="bodyDysmorphicDisorder">Body Dysmorphic Disorder</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="hypomaniaMania" name="specializations" value="Hypomania and Mania">
+        <label class="form-check-label" for="hypomaniaMania">Hypomania and Mania</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="loneliness" name="specializations" value="Loneliness">
+        <label class="form-check-label" for="loneliness">Loneliness</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="socialAnxiety" name="specializations" value="Social Anxiety">
+        <label class="form-check-label" for="socialAnxiety">Social Anxiety</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="seasonalAffectiveDisorder" name="specializations" value="Seasonal Affective Disorder">
+        <label class="form-check-label" for="seasonalAffectiveDisorder">Seasonal Affective Disorder</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="selfEsteem" name="specializations" value="Self Esteem">
+        <label class="form-check-label" for="selfEsteem">Self Esteem</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="adjustmentDisorder" name="specializations" value="Adjustment Disorder">
+        <label class="form-check-label" for="adjustmentDisorder">Adjustment Disorder</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="preMenstrualSyndrome" name="specializations" value="Pre Menstrual Syndrome">
+        <label class="form-check-label" for="preMenstrualSyndrome">Pre Menstrual Syndrome</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="menopause" name="specializations" value="Menopause">
+        <label class="form-check-label" for="menopause">Menopause</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="andropause" name="specializations" value="Andropause">
+        <label class="form-check-label" for="andropause">Andropause</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="involutionalMelancholia" name="specializations" value="Involutional Melancholia">
+        <label class="form-check-label" for="involutionalMelancholia">Involutional Melancholia</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="somatoformDisorders" name="specializations" value="Somatoform Disorders">
+        <label class="form-check-label" for="somatoformDisorders">Somatoform Disorders</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="workplaceStressManagement" name="specializations" value="Workplace Stress Management">
+        <label class="form-check-label" for="workplaceStressManagement">Workplace Stress Management</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="disruptiveBehaviourDissocialDisorders" name="specializations" value="Disruptive Behaviour and Dissocial Disorders">
+        <label class="form-check-label" for="disruptiveBehaviourDissocialDisorders">Disruptive Behaviour and Dissocial Disorders</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="neurodevelopmentalDisorders" name="specializations" value="Neurodevelopmental Disorders">
+        <label class="form-check-label" for="neurodevelopmentalDisorders">Neurodevelopmental Disorders</label>
+    </div>
+</div>
+
+                
+            </fieldset>
+
+            <!-- Theoretical Orientation -->
+            <fieldset>
+                <legend>Theoretical Orientation</legend>
+                <div class="form-group">
+                    <label>Select Theoretical Orientation(s)</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="cbt" value="CBT">
+                        <label class="form-check-label" for="cbt">CBT</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="dbt" value="DBT">
+                        <label class="form-check-label" for="dbt">DBT</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sfb" value="SFBT">
+                        <label class="form-check-label" for="sfb">SFBT</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="emdr" value="EMDR">
+                        <label class="form-check-label" for="emdr">EMDR</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="act" value="ACT">
+                        <label class="form-check-label" for="act">ACT</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="art" value="ART">
+                        <label class="form-check-label" for="art">ART</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="bwrt" value="BWRT">
+                        <label class="form-check-label" for="bwrt">BWRT</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="rebt" value="REBT">
+                        <label class="form-check-label" for="rebt">REBT</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="narrative" value="Narrative">
+                        <label class="form-check-label" for="narrative">Narrative</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="schema" value="Schema">
+                        <label class="form-check-label" for="schema">Schema</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="ta" value="TA">
+                        <label class="form-check-label" for="ta">TA</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gestalt" value="Gestalt">
+                        <label class="form-check-label" for="gestalt">Gestalt</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="nlp" value="NLP">
+                        <label class="form-check-label" for="nlp">NLP</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="psychoanalysis" value="Psychoanalysis">
+                        <label class="form-check-label" for="psychoanalysis">Psychoanalysis</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="jpmr" value="JPMR">
+                        <label class="form-check-label" for="jpmr">JPMR/PMR</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="aba" value="ABA">
+                        <label class="form-check-label" for="aba">ABA</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="eft" value="EFT">
+                        <label class="form-check-label" for="eft">EFT (Emotion Focused Therapy)</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Offline Practice -->
+            <fieldset>
+                <legend>Practice Settings</legend>
+                <div class="form-group">
+                    <label for="offlinePractice">Do you practice offline?</label>
+                    <select class="form-control" id="offlinePractice" required>
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group" id="clinicAddressContainer" style="display: none;">
+                    <label for="clinicAddress">Clinic Address</label>
+                    <input type="text" class="form-control" id="clinicAddress">
+                </div>
+            </fieldset>
+
+            <!-- Telehealth Availability -->
+            <fieldset>
+                <legend>Telehealth Availability</legend>
+                <div class="form-group">
+                    <label for="telehealth">Do you offer telehealth services?</label>
+                    <select class="form-control" id="telehealth" required>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Languages Known</legend>
+                <div class="form-group">
+                    <label>Select Language(s)</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="languages" value="English"> English</label>
+                        <label><input type="checkbox" name="languages" value="Hindi"> Hindi</label>
+                        <label><input type="checkbox" name="languages" value="Bengali"> Bengali</label>
+                        <label><input type="checkbox" name="languages" value="Telugu"> Telugu</label>
+                        <label><input type="checkbox" name="languages" value="Marathi"> Marathi</label>
+                        <label><input type="checkbox" name="languages" value="Tamil"> Tamil</label>
+                        <label><input type="checkbox" name="languages" value="Urdu"> Urdu</label>
+                        <label><input type="checkbox" name="languages" value="Gujarati"> Gujarati</label>
+                        <label><input type="checkbox" name="languages" value="Malayalam"> Malayalam</label>
+                        <label><input type="checkbox" name="languages" value="Kannada"> Kannada</label>
+                        <label><input type="checkbox" name="languages" value="Odia"> Odia</label>
+                        <label><input type="checkbox" name="languages" value="Punjabi"> Punjabi</label>
+                        <label><input type="checkbox" name="languages" value="Assamese"> Assamese</label>
+                    </div>
+                </div>
+            </fieldset>
+            
+            
+
+            <!-- Service Age Group -->
+            <fieldset>
+                <legend>Service Age Group</legend>
+                <div class="form-group">
+                    <label>Select Age Group(s)</label>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="children" name="serviceAgeGroup" value="Children">
+                        <label class="form-check-label" for="children">Children</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="teenagers" name="serviceAgeGroup" value="Teenagers">
+                        <label class="form-check-label" for="teenagers">Teenagers</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="adults" name="serviceAgeGroup" value="Adults">
+                        <label class="form-check-label" for="adults">Adults</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="youngAdults" name="serviceAgeGroup" value="Young Adults">
+                        <label class="form-check-label" for="youngAdults">Young Adults</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="midAge" name="serviceAgeGroup" value="Mid Age">
+                        <label class="form-check-label" for="midAge">Mid Age</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="seniorCitizens" name="serviceAgeGroup" value="Senior Citizens">
+                        <label class="form-check-label" for="seniorCitizens">Senior Citizens</label>
+                    </div>
+                </div>
+            </fieldset>
+
+
+            <!-- Serviceable Location -->
+            <fieldset>
+                <legend>Serviceable Location</legend>
+                <div class="form-group">
+                    <label for="primaryLocation">Primary Location</label>
+                    <input type="text" class="form-control" id="primaryLocation" required>
+                </div>
+                <div class="form-group">
+                    <label for="secondaryLocation">Secondary Location</label>
+                    <input type="text" class="form-control" id="secondaryLocation">
+                </div>
+            </fieldset>
+
+            <!-- Consultation Preference -->
+            <fieldset>
+                <legend>Consultation Preference</legend>
+                <div class="form-group">
+                    <label>Select Type(s) of Consultation</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="individual" value="Individual">
+                        <label class="form-check-label" for="individual">Individual</label>
+                        <input type="number" class="form-control fee-input mt-1" id="individualMinFee" placeholder="Min Fee" min="0">
+                        <input type="number" class="form-control fee-input mt-1" id="individualMaxFee" placeholder="Max Fee" min="0">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="group" value="Group">
+                        <label class="form-check-label" for="group">Group</label>
+                        <input type="number" class="form-control fee-input mt-1" id="groupMinFee" placeholder="Min Fee" min="0">
+                        <input type="number" class="form-control fee-input mt-1" id="groupMaxFee" placeholder="Max Fee" min="0">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="corporate" value="Corporate">
+                        <label class="form-check-label" for="corporate">Corporate</label>
+                        <input type="number" class="form-control fee-input mt-1" id="corporateMinFee" placeholder="Min Fee" min="0">
+                        <input type="number" class="form-control fee-input mt-1" id="corporateMaxFee" placeholder="Max Fee" min="0">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="probono" value="Probono">
+                        <label class="form-check-label" for="probono">Probono</label>
+                        <input type="hidden" id="probonoMinFee" value="0">
+                        <input type="hidden" id="probonoMaxFee" value="0">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Social Media Links -->
+            <fieldset>
+                <legend>Social Media Links</legend>
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn Profile URL</label>
+                    <input type="url" class="form-control" id="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                </div>
+                <div class="form-group">
+                    <label for="instagram">Instagram Profile URL</label>
+                    <input type="url" class="form-control" id="instagram" placeholder="https://instagram.com/yourprofile">
+                </div>
+            </fieldset>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // JavaScript to toggle the display of the clinic address input
+    document.getElementById('offlinePractice').addEventListener('change', function() {
+        var clinicAddressContainer = document.getElementById('clinicAddressContainer');
+        if (this.value === 'yes') {
+            clinicAddressContainer.style.display = 'block';
+        } else {
+            clinicAddressContainer.style.display = 'none';
+        }
+    });
+
+    // Add additional qualification fields with dropdown menu
+    document.getElementById('addQualification').addEventListener('click', function() {
+        const container = document.getElementById('qualificationContainer');
+        const newGroup = document.createElement('div');
+        newGroup.classList.add('qualification-group');
+        newGroup.innerHTML = `
+            <select class="form-control mt-2">
+                <option>MD (Psychiatry)</option>
+                <option>M.Phil (Clinical Psychology)</option>
+                <option>M.A. (Counseling Psychology)</option>
+                <option>MSc Psychology</option>
+                <option>PhD Psychology</option>
+                <!-- Add more qualifications as needed -->
+            </select>
+            <input type="file" class="form-control-file mt-2" required>
+        `;
+        container.appendChild(newGroup);
+    });
+
+    // Ensure Probono option fee is zero
+    document.getElementById('consultationType').addEventListener('change', function() {
+        const selectedOptions = Array.from(this.selectedOptions).map(option => option.value);
+        document.getElementById('minFee').value = selectedOptions.includes('Probono') ? 0 : document.getElementById('minFee').value;
+    });
+
+    // Handle field of study selection
+    document.getElementById('fieldOfStudy').addEventListener('change', function() {
+        const selectedOptions = Array.from(this.selectedOptions).map(option => option.text);
+        console.log('Selected fields of study:', selectedOptions);
+        // Perform additional actions with the selected options if needed
+    });
+
+    // Handle form submission or additional dynamic behaviors if required
+    document.querySelector('form').addEventListener('submit', function(event) {
+        // Example of form validation or processing
+        console.log('Form submitted');
+        // Add any other form handling logic here
+    });
+</script>
+
+
+
+</body>
+</html>
