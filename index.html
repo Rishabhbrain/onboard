@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern E-Learning Onboarding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .option-card:hover {
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-50 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl p-8 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute top-0 right-0 w-40 h-40 bg-blue-100 rounded-full -mr-20 -mt-20 opacity-50"></div>
+        <div class="absolute bottom-0 left-0 w-32 h-32 bg-indigo-100 rounded-full -ml-16 -mb-16 opacity-50"></div>
+
+        <!-- Header -->
+        <div class="relative mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Let's personalize your learning journey</h1>
+            <p class="text-gray-600">Answer a few questions to get started</p>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="mb-8 relative">
+            <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium text-blue-600" id="progress-text">Question 1 of 8</span>
+                <span class="text-sm font-medium text-blue-600" id="progress-percentage">12%</span>
+            </div>
+            <div class="w-full bg-gray-100 rounded-full h-2">
+                <div class="bg-blue-600 rounded-full h-2 transition-all duration-700" id="progress-bar" style="width: 12%"></div>
+            </div>
+        </div>
+
+        <!-- Question Container -->
+        <form id="onboarding-form" class="space-y-6 relative">
+            <div id="question-container" class="min-h-[300px]">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between mt-8 relative">
+                <button type="button" id="prev-btn" class="hidden transform transition-all duration-300 px-6 py-3 bg-gray-50 text-gray-700 rounded-xl hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 hover:shadow-md">
+                    <span class="flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        Previous
+                    </span>
+                </button>
+                <button type="button" id="next-btn" class="transform transition-all duration-300 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 hover:shadow-md">
+                    <span class="flex items-center">
+                        Next
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </button>
+                <button type="submit" id="submit-btn" class="hidden transform transition-all duration-300 px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 hover:shadow-md">
+                    <span class="flex items-center">
+                        Complete
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                id: 1,
+                title: "What's your name?",
+                type: "text",
+                placeholder: "Enter your full name",
+                required: true
+            },
+            {
+                id: 2,
+                title: "What's your email?",
+                type: "email",
+                placeholder: "you@example.com",
+                required: true
+            },
+            {
+                id: 3,
+                title: "What brings you here today?",
+                type: "select",
+                options: [
+                    "Career advancement",
+                    "Personal growth",
+                    "Academic success",
+                    "Professional certification"
+                ]
+            },
+            {
+                id: 4,
+                title: "Which areas interest you the most?",
+                type: "multiSelect",
+                options: [
+                    { value: "programming", label: "Programming & Development", icon: "💻" },
+                    { value: "design", label: "Design & Creative", icon: "🎨" },
+                    { value: "business", label: "Business & Entrepreneurship", icon: "💼" },
+                    { value: "marketing", label: "Digital Marketing", icon: "📱" }
+                ]
+            },
+            {
+                id: 5,
+                title: "What's your current experience level?",
+                type: "radio",
+                options: [
+                    "Beginner - Just starting out",
+                    "Intermediate - Some experience",
+                    "Advanced - Experienced professional"
+                ]
+            },
+            {
+                id: 6,
+                title: "How many hours can you dedicate weekly?",
+                type: "range",
+                min: 1,
+                max: 20,
+                default: 5
+            },
+            {
+                id: 7,
+                title: "When do you prefer to learn?",
+                type: "buttons",
+                options: [
+                    { value: "morning", label: "Morning", icon: "🌅" },
+                    { value: "afternoon", label: "Afternoon", icon: "☀️" },
+                    { value: "evening", label: "Evening", icon: "🌙" }
+                ]
+            },
+            {
+                id: 8,
+                title: "What's your learning goal?",
+                type: "textarea",
+                placeholder: "Tell us about what you want to achieve..."
+            }
+        ];
+
+        let currentQuestion = 0;
+        const totalQuestions = questions.length;
+        const responses = {};
+
+        // DOM Elements
+        const form = document.getElementById('onboarding-form');
+        const questionContainer = document.getElementById('question-container');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const progressPercentage = document.getElementById('progress-percentage');
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / totalQuestions) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `Question ${currentQuestion + 1} of ${totalQuestions}`;
+            progressPercentage.textContent = `${Math.round(progress)}%`;
+        }
+
+        function createQuestionElement(question) {
+            const div = document.createElement('div');
+            div.className = 'slide-in';
+            let innerHTML = `<h2 class="text-2xl font-bold text-gray-800 mb-6">${question.title}</h2>`;
+
+            switch (question.type) {
+                case 'text':
+                case 'email':
+                    innerHTML += `
+                        <input type="${question.type}" 
+                               class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring focus:ring-blue transition-all duration-300"
+                               placeholder="${question.placeholder}"
+                               ${question.required ? 'required' : ''}>
+                    `;
+                    break;
+
+                case 'select':
+                    innerHTML += `
+                        <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring focus:ring-blue transition-all duration-300">
+                            ${question.options.map(option => `
+                                <option value="${option.toLowerCase().replace(/\s+/g, '-')}">${option}</option>
+                            `).join('')}
+                        </select>
+                    `;
+                    break;
+
+                case 'multiSelect':
+                    innerHTML += `
+                        <div class='grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-x-[10px]'>
+                            ${question.options.map(option => `
+                                <label class='option-card flex items-center p-[10px] border border-gray rounded-xl cursor-pointer hover:border-blue transition-all duration-300'>
+                                    <input type='checkbox' name='interests' value='${option.value}' 
+                                           class='h-[20px] w-[20px] text-blue border-gray'>
+                                    <span class='ml-[10px]'>
+                                        ${option.icon} ${option.label}
+                                    </span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    `;
+                    break;
+
+                case 'radio':
+                    innerHTML += `
+                        <div class='space-y-[10px]'>
+                            ${question.options.map((option, index) => `
+                                <label class='option-card flex items-center p-[10px] border border-gray rounded-xl cursor-pointer hover:border-blue transition-all duration-300'>
+                                    <input type='radio' name='experience' value='${option}' 
+                                           class='h-[20px] w-[20px] text-blue border-gray'>
+                                    <span class='ml-[10px]'>${option}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    `;
+                    break;
+
+                case 'range':
+                    innerHTML += `
+                        <input type='range' min='${question.min}' max='${question.max}' 
+                            value='${question.default}' 
+                            class='w-full h-[5px] bg-gray rounded-lg appearance-none cursor-pointer' 
+                            id='range-input'>
+                        <div id='range-output'>${question.default} hours per week</div>`;
+                    break;
+
+
+                case 'buttons':
+                    innerHTML += `
+                        <div class='grid grid-cols-[repeat(3,1fr)] gap-x-[10px]'>
+                            ${question.options.map(option => `
+                                <button type='button' 
+                                        class='option-card flex flex-col items-center justify-center p-[10px] border border-gray rounded-xl hover:border-blue transition-all duration-300' onclick="selectButton('${option.value}')">
+                                    ${option.icon}<br>${option.label}
+                                </button>`).join('')}
+                        </div>`;
+                    break;
+
+                case 'textarea':
+                    innerHTML += `
+                        <textarea 
+                            rows='4'
+                            placeholder='${question.placeholder}'
+                            class='w-full px-[10px] py-[10px] border border-gray rounded-lg'></textarea>`;
+                    break;
+            }
+
+            div.innerHTML = innerHTML;
+            return div;
+        }
+
+        function showQuestion(index) {
+            questionContainer.innerHTML = '';
+            questionContainer.appendChild(createQuestionElement(questions[index]));
+            
+            // Update buttons
+            prevBtn.classList.toggle('hidden', index === 0);
+            nextBtn.classList.toggle('hidden', index === totalQuestions - 1);
+            submitBtn.classList.toggle('hidden', index !== totalQuestions - 1);
+            
+            updateProgress();
+        }
+
+        function selectButton(value) {
+            responses['preferred_time'] = value;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            const current = questions[currentQuestion];
+            if (current.type === 'text' || current.type === 'email') {
+                const input = questionContainer.querySelector('input');
+                responses[current.title] = input.value;
+            } else if (current.type === 'select') {
+                const select = questionContainer.querySelector('select');
+                responses[current.title] = select.value;
+            } else if (current.type === 'multiSelect') {
+                const checkboxes = questionContainer.querySelectorAll('input[type="checkbox"]:checked');
+                responses[current.title] = Array.from(checkboxes).map(cb => cb.value);
+            } else if (current.type === 'radio') {
+                const radio = questionContainer.querySelector('input[type="radio"]:checked');
+                responses[current.title] = radio ? radio.value : '';
+            } else if (current.type === 'range') {
+                // Inside the showQuestion function after appending the question
+                const rangeInput = questionContainer.querySelector('#range-input');
+                if (rangeInput) {
+                    const rangeOutput = questionContainer.querySelector('#range-output');
+                    rangeInput.addEventListener('input', () => {
+                        rangeOutput.textContent = `${rangeInput.value} hours per week`;
+                    });
+                }
+
+                responses[current.title] = range.value;
+            } else if (current.type === 'textarea') {
+                const textarea = questionContainer.querySelector('textarea');
+                responses[current.title] = textarea.value;
+            }
+
+            currentQuestion++;
+            showQuestion(currentQuestion);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentQuestion--;
+            showQuestion(currentQuestion);
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const current = questions[currentQuestion];
+            if (current.type === 'text' || current.type === 'email') {
+                const input = questionContainer.querySelector('input');
+                responses[current.title] = input.value;
+            } else if (current.type === 'select') {
+                const select = questionContainer.querySelector('select');
+                responses[current.title] = select.value;
+            } else if (current.type === 'multiSelect') {
+                const checkboxes = questionContainer.querySelectorAll('input[type="checkbox"]:checked');
+                responses[current.title] = Array.from(checkboxes).map(cb => cb.value);
+            } else if (current.type === 'radio') {
+                const radio = questionContainer.querySelector('input[type="radio"]:checked');
+                responses[current.title] = radio ? radio.value : '';
+            } else if (current.type === 'range') {
+                const range = questionContainer.querySelector('input[type="range"]');
+                responses[current.title] = range.value;
+            } else if (current.type === 'textarea') {
+                const textarea = questionContainer.querySelector('textarea');
+                responses[current.title] = textarea.value;
+            }
+
+            alert('Thank you for completing the onboarding! Your responses:\n\n' + JSON.stringify(responses, null, 2));
+        });
+
+        // Initialize with first question
+        showQuestion(0);
+    </script>
+</body>
+</html>
